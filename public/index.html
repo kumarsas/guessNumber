@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html ng-app="guessNumber">
+
+<head>
+		<title>Guess Number</title>
+		<link rel="stylesheet" href="lib/bootstrap.min.css">
+	</head>
+
+	<body>
+		<div class="container" ng-controller="guessNumberCtrl">
+			<div>
+				<h3>Guess Number</h3>
+			</div>
+			<div class="well">
+				Guess any Number between 1 and 1000
+			</div>
+			<form role="form" class="form-inline" name="guessForm">
+				<div class="form-group">
+					<b>Your Guess: </b><input type="number" class="form-control" name="num" ng-model="guess"></input>
+				</div>
+				<div class="form-group">
+					<button type="button" class="btn btn-primary" ng-click="verifyGuess()">Verify</buton>
+				</div>
+				<div class="form-group">
+					<button type="button" class="btn btn-warning" ng-click="initializeGame()">Restart</buton>
+				</div>
+				<div class="form-group">
+					<button type="button" class="btn btn-info" ng-click="checkAnswer()">Gave Up? Check Answer</buton>
+				</div>
+			</form><br>
+			
+				<p ng-show="deviation>0"><span class="alert alert-warning">Your number is low</span></p>
+				<p ng-show="deviation<0"><span class="alert alert-warning">Your number is high</span></p>
+				<p ng-show="deviation===0"><span class="alert alert-success">You Won!! Numbers Matched</span></p>
+				<p ng-show="blank===null"><span class="alert alert-danger">{{message}}</span></p>
+				<p ng-show="answer===original"><span class="alert alert-success">Answer is : {{answer}} ! You gave up after {{NumberOfRetries}} attempts</span></p><br>
+
+			<p class="text-info">Number of attempts : <span class="badge">{{NumberOfRetries}}</span></p>
+		</div>
+		<script src="lib/jquery.min.js"></script>
+		<script src="lib/angular.min.js"></script>
+		<script src="lib/bootstrap.min.js"></script>
+		<script src="js/guess.js"></script>
+	</body>
+</html>
